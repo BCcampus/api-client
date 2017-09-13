@@ -93,8 +93,10 @@ class Events {
 		delete_option( 'eypd-events-activated' );
 	}
 
-	function renderEypdEvents( $args ) {
+	function renderEypdEvents() {
 		ob_start();
+
+		// need to be able to receive arguments from the page
 		$args = $_GET;
 		new Controllers\Control( $args );
 

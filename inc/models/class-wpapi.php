@@ -25,14 +25,24 @@ class WpApi implements RestInterface {
 		/**
 		 * JSON response please
 		 */
-		$opts      = array(
+		$opts       = array(
 			'http' => array(
 				'method' => 'GET',
 				'header' => 'Accept: application/json',
 			),
 		);
-		$context   = stream_context_create( $opts );
-		$this->url = $this->host . $this->path;
+		$context    = stream_context_create( $opts );
+		$parameters = '';
+
+		foreach ( $args as $key => $val ) {
+			if ( empty( $val ) ) {
+				continue;
+			}
+			$parameters .= $key . '=' . $val . '&';
+		}
+		$params = rtrim( $parameters, '&' );
+
+		$this->url = $this->host . $this->path . '?' . $params;
 
 		$result = file_get_contents( $this->url, false, $context );
 
@@ -44,6 +54,7 @@ class WpApi implements RestInterface {
 
 		return json_decode( $result, true );
 	}
+
 
 	function create() {
 		// TODO: Implement create() method.

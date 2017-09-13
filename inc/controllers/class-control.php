@@ -26,19 +26,19 @@ class Control {
 	 * @var array
 	 */
 	protected $defaultArgs = array(
-		'context'            => '',
-		'page'               => '',
-		'per_page'           => '',
+		'context'            => 'embed',
+		'page'               => '1',
+		'per_page'           => '100',
 		'search'             => '',
 		'after'              => '',
 		'author'             => '',
 		'author_exclude'     => '',
 		'include'            => '',
 		'offset'             => '',
-		'order'              => '',
-		'orderby'            => '',
+		'order'              => 'desc',
+		'orderby'            => 'date',
 		'slug'               => '',
-		'status'             => '',
+		'status'             => 'publish',
 		'categories'         => '',
 		'categories_exclude' => '',
 		'tags'               => '',
@@ -76,7 +76,12 @@ class Control {
 			'per_page' => array(
 				'filter' => FILTER_SANITIZE_NUMBER_INT,
 			),
-
+			'offset' => array(
+				'filter' => FILTER_SANITIZE_NUMBER_INT,
+			),
+			'per_page' => array(
+				'filter' => FILTER_SANITIZE_NUMBER_INT,
+			),
 		);
 
 		// filter get input, delete empty values

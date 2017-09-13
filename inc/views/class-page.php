@@ -29,6 +29,14 @@ class Page {
 	}
 
 	public function renderAll() {
-		print_r( $this->events );
+		$html = '<h2>Early Years Professional Development Events</h2>';
+
+		foreach ( $this->events as $event ) {
+			$html .= "<h4><a href='{$event['link']}'>{$event['title']['rendered']}</a></h4>";
+			$html .= "<p>{$event['excerpt']['rendered']}</p>";
+		}
+
+		echo $html;
+
 	}
 }
