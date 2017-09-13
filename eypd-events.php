@@ -42,6 +42,4 @@ if ( ! defined( 'EYPD_EVENTS_PLUGIN_DIR' ) ) {
 
 require EYPD_EVENTS_PLUGIN_DIR . 'autoloader.php';
 
-if ( get_option( 'eypd-events-activated' ) ) {
-	$eypd = \EYPD\Events::get_instance();
-}
+new \EYPD\Events();
