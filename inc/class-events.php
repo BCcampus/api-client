@@ -48,7 +48,7 @@ class Events {
 		register_activation_hook( __FILE__, array( $this, 'activate' ) );
 		register_deactivation_hook( __FILE__, array( $this, 'deActivate' ) );
 
-		add_shortcode( 'eypd_events', array( $this, 'renderEypdEvents' ) );
+		add_shortcode( 'api_client', array( $this, 'renderEypdEvents' ) );
 
 	}
 
@@ -102,7 +102,7 @@ class Events {
 			'per_page' => '50',
 			'search'   => '',
 			'author'   => '',
-		), $atts, 'eypd_events' );
+		), $atts, 'api_client' );
 
 		// merge $_GET arguments from the page
 		$args = array_merge( $atts, $_GET );
