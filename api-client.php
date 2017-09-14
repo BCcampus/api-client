@@ -1,15 +1,15 @@
 <?php
 /**
- * Plugin Name:     Early Years Professional Development Events
- * Plugin URI:      https://github.com/bccampus/eypd-events
- * Description:     Display professional development events on your site
+ * Plugin Name:     WP API Client Shortcode
+ * Plugin URI:      https://github.com/bccampus/api-client
+ * Description:     Display content from another site using the WP API
  * Author:          bdolor
  * Author URI:      https://bradpayne.ca
- * Text Domain:     eypd-events
+ * Text Domain:     api-client
  * Domain Path:     /languages
  * Version:         0.1.0
  *
- * @package         Eypd_Events
+ * @package         BCcampus\ApiClient
  */
 
 // If file is called directly, abort.
@@ -27,8 +27,8 @@ if ( ! defined( 'WPINC' ) ) {
 |
 */
 
-if ( ! defined( 'EYPD_EVENTS_PLUGIN_DIR' ) ) {
-	define( 'EYPD_EVENTS_PLUGIN_DIR', ( __DIR__ . '/' ) );
+if ( ! defined( 'API_CLIENT_PLUGIN_DIR' ) ) {
+	define( 'API_CLIENT_PLUGIN_DIR', ( __DIR__ . '/' ) );
 }
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +40,6 @@ if ( ! defined( 'EYPD_EVENTS_PLUGIN_DIR' ) ) {
 |
 */
 
-require EYPD_EVENTS_PLUGIN_DIR . 'autoloader.php';
+require API_CLIENT_PLUGIN_DIR . 'autoloader.php';
 
-new \EYPD\Events();
+new \BCcampus\ApiClient\Events();

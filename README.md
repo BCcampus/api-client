@@ -14,7 +14,7 @@ Simple plugin to display Early Years Professional Development Events on your sit
 
 ## Installation ##
 
-1. Upload `eypd-events` to the `/wp-content/plugins/` directory
+1. Upload `api-client` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 
 

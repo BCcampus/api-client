@@ -1,32 +1,32 @@
 <?php
 /**
- * Project: eypd-events
+ * Project: api-client
  * Project Sponsor: BCcampus <https://bccampus.ca>
  * Copyright 2012-2017 Brad Payne <https://bradpayne.ca>
  * Date: 2017-09-12
  * Licensed under GPLv3, or any later version
  *
  * @author Brad Payne
- * @package EYPD\Controllers
+ * @package BCcampus\ApiClient\Controllers
  * @license https://www.gnu.org/licenses/gpl-3.0.txt
  * @copyright (c) 2012-2017, Brad Payne
  */
 
-namespace EYPD\Controllers;
+namespace BCcampus\ApiClient\Controllers;
 
-use EYPD\Models;
-use EYPD\Views;
+use BCcampus\ApiClient\Models;
+use BCcampus\ApiClient\Views;
 
 /**
  * Class Control
- * @package EYPD\Controllers
+ * @package BCcampus\ApiClient\Controllers
  */
-class Control {
+class WpApi {
 	/**
 	 * @var array
 	 */
 	protected $defaultArgs = array(
-		'context'            => 'embed',
+		'context'            => 'embed', // embed, view, edit
 		'page'               => '1',
 		'per_page'           => '100',
 		'search'             => '',
@@ -73,13 +73,13 @@ class Control {
 			'per_page' => array(
 				'filter' => FILTER_SANITIZE_NUMBER_INT,
 			),
-			'per_page' => array(
-				'filter' => FILTER_SANITIZE_NUMBER_INT,
-			),
 			'offset' => array(
 				'filter' => FILTER_SANITIZE_NUMBER_INT,
 			),
-			'per_page' => array(
+			'author' => array(
+				'filter' => FILTER_SANITIZE_NUMBER_INT,
+			),
+			'author_exclude' => array(
 				'filter' => FILTER_SANITIZE_NUMBER_INT,
 			),
 		);
@@ -87,9 +87,8 @@ class Control {
 		// filter get input, delete empty values
 		$get = ( false !== filter_input_array( INPUT_GET, $args_get, false ) ) ? filter_input_array( INPUT_GET, $args_get, false ) : '';
 
-		// let the filtered get variables override the default arguments
 		if ( is_array( $get ) ) {
-			// filtered get overrides default
+			// filtered get overrides defaultArgs
 			$this->args = array_merge( $this->defaultArgs, $get );
 			// programmer arguments override everything
 			$this->args = array_merge( $this->args, $args );
@@ -124,7 +123,7 @@ class Control {
 	protected function decider() {
 		$rest_api = new Models\WpApi();
 
-		$view = new Views\Page( $rest_api, $this->args );
+		$view = new Views\WpApi( $rest_api, $this->args );
 		$view->renderAll();
 	}
 

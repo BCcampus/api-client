@@ -1,6 +1,6 @@
 <?php
 
-namespace EYPD\Polymorphism;
+namespace BCcampus\ApiClient\Polymorphism;
 
 interface RestInterface {
 

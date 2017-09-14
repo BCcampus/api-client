@@ -1,9 +1,9 @@
 {
-  "name": "bccampus/eypd-events",
+  "name": "bccampus/api-client",
   "description": "Adds Early Years Professional Development Events to your site",
   "type": "wordpress-plugin",
   "version": "0.1.0",
-  "homepage": "https://github.com/bccampus/eypd-events",
+  "homepage": "https://github.com/bccampus/api-client",
   "authors": [
     {
       "name": "Brad Payne",

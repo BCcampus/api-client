@@ -1,6 +1,6 @@
-=== Early Years Professional Development Events ===
+=== WordPress API Client Shortcode ===
 Contributors: bdolor
-Tags: events, early years, professional development
+Tags: api, client, restful, wp api
 Requires at least: 4.8.1
 Tested up to: 4.8.1
 Stable tag: 0.1.0
@@ -14,7 +14,7 @@ Simple plugin to display Early Years Professional Development Events on your sit
 
 == Installation ==
 
-1. Upload `eypd-events` to the `/wp-content/plugins/` directory
+1. Upload `api-client` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 
 

@@ -9,7 +9,7 @@ module.exports = function( grunt ) {
 
 		addtextdomain: {
 			options: {
-				textdomain: 'eypd-events',
+				textdomain: 'api-client',
 			},
 			target: {
 				files: {
@@ -30,8 +30,8 @@ module.exports = function( grunt ) {
 			target: {
 				options: {
 					domainPath: '/languages',
-					mainFile: 'eypd-events.php',
-					potFilename: 'eypd-events.pot',
+					mainFile: 'api-client.php',
+					potFilename: 'api-client.pot',
 					potHeaders: {
 						poedit: true,
 						'x-poedit-keywordslist': true

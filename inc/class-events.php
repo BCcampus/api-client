@@ -1,24 +1,24 @@
 <?php
 /**
- * Project: eypd-events
+ * Project: api-client
  * Project Sponsor: BCcampus <https://bccampus.ca>
  * Copyright 2012-2017 Brad Payne <https://bradpayne.ca>
  * Date: 2017-09-11
  * Licensed under GPLv3, or any later version
  *
  * @author Brad Payne
- * @package EYPD
+ * @package BCcampus\ApiClient
  * @license https://www.gnu.org/licenses/gpl-3.0.txt
  * @copyright (c) 2012-2017, Brad Payne
  */
 
-namespace EYPD;
+namespace BCcampus\ApiClient;
 
-use EYPD\Controllers;
+use BCcampus\ApiClient\Controllers;
 
 /**
  * Class Events
- * @package EYPD
+ * @package BCcampus\ApiClient
  */
 class Events {
 	/**
@@ -35,7 +35,7 @@ class Events {
 	 * @since 0.1.0
 	 * @var string
 	 */
-	protected $plugin_slug = 'eypd-events';
+	protected $plugin_slug = 'api-client';
 
 	/**
 	 * Events constructor.
@@ -77,7 +77,7 @@ class Events {
 			return;
 		}
 
-		add_option( 'eypd-events-activated', true );
+		add_option( 'api-client-activated', true );
 	}
 
 	/**
@@ -90,15 +90,24 @@ class Events {
 			return;
 		}
 
-		delete_option( 'eypd-events-activated' );
+		delete_option( 'api-client-activated' );
 	}
 
-	function renderEypdEvents() {
+	function renderEypdEvents( $atts ) {
 		ob_start();
 
-		// need to be able to receive arguments from the page
-		$args = $_GET;
-		new Controllers\Control( $args );
+		// merge defaults with attributes passed
+		$atts = shortcode_atts( array(
+			'context'  => 'embed',
+			'per_page' => '50',
+			'search'   => '',
+			'author'   => '',
+		), $atts, 'eypd_events' );
+
+		// merge $_GET arguments from the page
+		$args = array_merge( $atts, $_GET );
+
+		new Controllers\WpApi( $args );
 
 		return ob_get_clean();
 	}

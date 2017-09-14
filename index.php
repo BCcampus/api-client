@@ -14,8 +14,8 @@
 |
 */
 
-if ( ! defined( 'EYPD_EVENTS_PLUGIN_DIR' ) ) {
-	define( 'EYPD_EVENTS_PLUGIN_DIR', ( __DIR__ . '/' ) );
+if ( ! defined( 'API_CLIENT_PLUGIN_DIR' ) ) {
+	define( 'API_CLIENT_PLUGIN_DIR', ( __DIR__ . '/' ) );
 }
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +27,7 @@ if ( ! defined( 'EYPD_EVENTS_PLUGIN_DIR' ) ) {
 |
 */
 
-require EYPD_EVENTS_PLUGIN_DIR . 'autoloader.php';
+require API_CLIENT_PLUGIN_DIR . 'autoloader.php';
 
 $args = $_GET;
-new \EYPD\Controllers\Control( $args );
+new \BCcampus\ApiClient\Controllers\WpApi( $args );
