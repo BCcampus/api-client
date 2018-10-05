@@ -19,8 +19,11 @@ WordPress plugin that displays content from another site using the WP REST API v
 
 ## Basic Use ## 
 `[api_client]`
+
 `[api_client per_page=20]`
+
 `[api_client search="have stress"]`
+
 `[api_client search="play" per_page=7]`
 
 ## Changelog ##
