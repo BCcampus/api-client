@@ -30,10 +30,10 @@ class WpApi {
 
 	public function renderAll() {
 		$html = '';
-//		echo "<pre>";
-//		print_r( $this->events );
-//		echo "</pre>";
-//		die();
+		//      echo "<pre>";
+		//      print_r( $this->events );
+		//      echo "</pre>";
+		//      die();
 		if ( ! empty( $this->events ) ) {
 			foreach ( $this->events as $event ) {
 				$html .= "<h4><a href='{$event['link']}' target='_blank'>{$event['title']['rendered']}</a></h4>";
@@ -44,7 +44,6 @@ class WpApi {
 
 				}
 			}
-
 		}
 		echo $html;
 	}

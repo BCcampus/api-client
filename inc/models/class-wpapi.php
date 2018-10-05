@@ -17,6 +17,7 @@ namespace BCcampus\ApiClient\Models;
 use BCcampus\ApiClient\Polymorphism\RestInterface;
 
 class WpApi implements RestInterface {
+
 	private $host = 'https://earlyyearsbc.ca';
 	private $path = '/wp-json/wp/v2/event/';
 	private $url = '';
@@ -30,13 +31,6 @@ class WpApi implements RestInterface {
 		/**
 		 * JSON response please
 		 */
-		$opts       = array(
-			'http' => array(
-				'method' => 'GET',
-				'header' => 'Accept: application/json',
-			),
-		);
-		$context    = stream_context_create( $opts );
 		$parameters = '';
 
 		foreach ( $args as $key => $val ) {
@@ -50,15 +44,17 @@ class WpApi implements RestInterface {
 		// build the endpoint
 		$this->url = $this->host . $this->path . '?' . $params;
 
-		$result = file_get_contents( $this->url, false, $context );
+		$result = wp_remote_get( $this->url, [ 'sslverify' => FALSE ] );
 
 		// evaluate the result
-		if ( ! $result ) {
+		if ( is_wp_error( $result ) ) {
 			// TODO: implement exception handling
 			error_log( 'WP API is not returning results as expected in \EYPD\Models\WpApi::retrieve' );
+
+			return '';
 		}
 
-		return json_decode( $result, true );
+		return json_decode( $result['body'], TRUE );
 	}
 
 
