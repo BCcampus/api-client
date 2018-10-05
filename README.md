@@ -17,6 +17,11 @@ WordPress plugin that displays content from another site using the WP REST API v
 1. Upload `api-client` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 
+## Basic Use ## 
+`[api_client]`
+`[api_client per_page=20]`
+`[api_client search="have stress"]`
+`[api_client search="play" per_page=7]`
 
 ## Changelog ##
 
